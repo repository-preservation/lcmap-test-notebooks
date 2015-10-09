@@ -24,7 +24,7 @@ jupyter-setup: $(VENV) $(VENV)/bin/pip
 
 py-setup: $(VENV) $(VENV)/bin/pip jupyter-setup
 	. $(VENV)/bin/activate && \
-	$(PIP) install numpy pandas matplotlib scikit-image
+	$(PIP) install numpy pandas matplotlib scikit-image cassandra-driver
 	. $(VENV)/bin/activate && \
 	$(PIP) install git+https://github.com/USGS-EROS/lcmap-ingest-py.git
 	. $(VENV)/bin/activate && \
