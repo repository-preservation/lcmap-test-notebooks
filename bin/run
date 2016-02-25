@@ -9,4 +9,5 @@ echo
 echo "Starting LCMAP Jupyter notebook server on $IP ..."
 echo
 echo
+
 jupyter notebook --no-browser -y --ip=0.0.0.0 --notebook-dir=~/notebooks --port=1078 --log-level=INFO
