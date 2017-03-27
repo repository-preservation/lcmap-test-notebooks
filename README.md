@@ -1,39 +1,46 @@
 # Jupyter/IPython Notebooks
 
-*For testing and prototyping LCMAP APIs, UX, and DX*
+*Learn how to use (and test) the LCMAP system.*
 
-## Dependencies
+## Dependency
 
-LCMAP depends upon the [GDAL](http://www.gdal.org/)
-library and this is something that needs to be installed on your system using
-your package manager.
+* Python 3.5.x
 
-For Mac OS X:
+## Getting Started
 
-```bash
-$ brew install gdal
+Once you have Python installed, run this from a shell to create a virtual environment with Jupyter, Numpy, Pandas, Matplotlib, and scikit-image:
+
+```
+make setup
 ```
 
-For Debian-based Linux:
+Start a Jupyter Notebook running a Python 3 kernel, run:
 
 ```bash
-$ sudo apt-get install gdal
+bin/run
 ```
 
-## Usage
+Go to `http://localhost:1078/` using a web browser.
 
-### Python
+## Organization
 
-To start a Jupyter Notebook running a Python 3 kernel, run the following:
+Notebooks are organized by topic:
+
+* Aardvark
+  * Using Landsat Data
+  * Curating Landsat Data
+* Clownfish
+  * Working with Change Detection Data
+  * Deploying an Algorithm
+* Other
+  * Spark
+
+## Contributing
+
+If you need to provide additional libraries add them to requirements.txt, just
+make sure you've activated this project's virtual environment first.
 
 ```bash
-$ make py-run
-```
-
-### Clojure
-
-To start a Jupyter Notebook running a Clojure kernel, run the following:
-
-```bash
-$ make clj-run
+source .venv/bin/activate
+pip freee > requirements.txt
 ```

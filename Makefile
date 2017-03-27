@@ -1,34 +1,19 @@
 VENV=.venv
 PY=$(VENV)/bin/python3.5
 PIP=$(VENV)/bin/pip
-JUP=$(VENV)/bin/jupyter
 PIP_INSTALLER=get-pip.py
-PIP_INSTALLER_URL=https://raw.githubusercontent.com/pypa/pip/develop/contrib/$(PIP_INSTALLER)
-GET_PIP=python/$(PIP_INSTALLER)
-GET_CLOJUP=clojure/clojupyter
+PIP_INSTALLER_URL=https://bootstrap.pypa.io/get-pip.py
 
 $(VENV):
 	python3.5 -m venv --without-pip $(VENV)
 
-$(GET_PIP):
-	wget $(PIP_INSTALLER_URL) && \
-	mv $(PIP_INSTALLER) python/$(PIP_INSTALLER)
+$(PIP):
+	curl --silent $(PIP_INSTALLER_URL) | $(PY)
+	$(PIP) install --upgrade pip
 
-$(PIP): $(GET_PIP)
+setup: $(VENV) $(PIP)
 	. $(VENV)/bin/activate && \
-	$(PY) python/$(PIP_INSTALLER)
-
-setup-python: $(VENV) $(VENV)/bin/pip
-	. $(VENV)/bin/activate && \
-	$(PIP) install jupyter
-
-setup-jupyter: $(VENV) $(VENV)/bin/pip
-	. $(VENV)/bin/activate && \
-	$(PIP) install numpy pandas matplotlib scikit-image
-	. $(VENV)/bin/activate && \
-	$(PIP) freeze > python/requirements.txt
-
-setup: setup-python setup-jupyter
+	$(PIP) install -r requirements.txt
 
 clean:
-	rm -rf .venv
+	-rm -rf .venv

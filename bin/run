@@ -2,12 +2,15 @@
 
 IP=$(ip -o -f inet addr|grep eth0|awk '{print $4}'|awk -F / '{print $1}')
 
-echo
-echo
-echo "**********************************************"
-echo
-echo "Starting LCMAP Jupyter notebook server on $IP ..."
-echo
-echo
 
-jupyter notebook --no-browser -y --ip=0.0.0.0 --notebook-dir=./notebooks --port=1078 --log-level=INFO
+if [ -e .venv/bin/jupyter ]
+then
+    echo
+    echo "Starting Jupyter notebook server on $IP ..."
+    echo
+    .venv/bin/jupyter notebook --no-browser -y --ip=0.0.0.0 --notebook-dir=./notebooks --port=1078 --log-level=INFO
+else
+    echo
+    echo "Juptyer not present yet, did you run 'make setup' yet?"
+    echo
+fi
