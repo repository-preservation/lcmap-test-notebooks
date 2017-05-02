@@ -1,11 +1,11 @@
 VENV=.venv
-PY=$(VENV)/bin/python3.5
+PY=$(VENV)/bin/python3
 PIP=$(VENV)/bin/pip
 PIP_INSTALLER=get-pip.py
 PIP_INSTALLER_URL=https://bootstrap.pypa.io/get-pip.py
 
 $(VENV):
-	python3.5 -m venv --without-pip $(VENV)
+	python3 -m venv --without-pip $(VENV)
 
 $(PIP):
 	curl --silent $(PIP_INSTALLER_URL) | $(PY)
